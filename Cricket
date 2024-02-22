@@ -1,0 +1,65 @@
+Description
+
+Praveen is crazy about IPL. He was watching Mumbai Indians vs. Chennai Super Kings final match. Mumbai won the toss and elected to bat first. They finished batting with a score of X. Next, Chennai started to bat and scored Y runs in N number of balls. Now, Praveen wants to calculate the run rate and check whether there is a probability for Chennai to win or not. Help him calculate the run rate and check the probability.
+
+
+
+Input Format
+
+Input consists of 4 integers. The first input corresponds to the total number of balls. The second input corresponds to the total number of runs. The third input corresponds to the number of runs scored. The fourth input corresponds to the number of balls bowled.
+
+
+
+Output Format
+
+The first output corresponds to the total number of overs. The second output corresponds to the total number of overs finished. The third output corresponds to the current run rate. The fourth output corresponds to the total run rate. The fifth output corresponds to the eligibility. If eligible print "Eligible to Win" else print "Not Eligible to Win"
+
+
+
+Sample Input 1
+
+300
+
+375
+
+78
+
+45
+
+
+
+Sample Output 1
+
+50
+
+7.3
+
+10.7
+
+7.5
+
+Eligible to Win
+--------------------------------------------------------------------------------------------------CODE------------------------------------------------------------------------------------------------------------------------------------------
+#include <stdio.h>
+int main()
+{
+  int total_balls,total_runs,runs_scored,balls_bowled;
+  scanf("%d%d%d%d",&total_balls,&total_runs,&runs_scored,&balls_bowled);
+  int overs = total_balls/6;
+  printf("%d",overs);
+  float finished_overs = (balls_bowled/6.2);
+  printf("\n%.1f",finished_overs);
+  float runrate = (runs_scored/finished_overs);
+  printf("\n%.1f",runrate);
+  float total_runrate = (total_runs/(total_balls/6.0));
+  printf("\n%.1f",total_runrate);
+  if(runrate>=total_runrate)
+  {
+    printf("\nEligible to Win");
+  }
+  else
+  {
+    printf("\nNot Eligible to Win");
+  }
+  return 0;
+}
