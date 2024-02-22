@@ -1,0 +1,79 @@
+Description
+
+Richard Castle wants to buy a shirt. As he is very lazy, he decided to buy the shirt online. He chooses a shirt on Flipkart and is surprised to see the same shirt on Snapdeal, and Amazon as well. So he decided to buy the shirt from the website which offers the least price. The price of the shirt, the discount percentage, and the shipping charges of all three websites have been given as input. Help him in calculating the price of the shirt on each website and decide which website has the lowest price.If the price in all the three websites are same then first priority goes to Flipkart, then Snapdeal and finally Amazon.
+
+
+
+Input Format
+
+Input consists of 9 integers. The first three input corresponds to Flipkart details such as the price of the shirt, discount offered, and shipping charges. The next three input corresponds to Snapdeal details such as the price of the shirt, discount offered, and shipping charge. The last three input corresponds to Amazon details such as the price of the shirt, discount offered, and shipping charge.
+
+
+
+Output Format
+
+The Output consists of three integers that denote the prices on Flipkart, Snapdeal, and Amazon and should suggest the website that has the lowest price.
+
+
+
+Sample Input
+
+1000
+
+50
+
+50
+
+900
+
+50
+
+70
+
+800
+
+10
+
+200
+
+
+
+Sample Output
+
+In Flipkart: Rs.550
+
+In Snapdeal: Rs.520
+
+In Amazon: Rs.920
+
+Choose Snapdeal
+--------------------------------------------------------------------------------------------------CODE------------------------------------------------------------------------------------------------------------------------------------------
+#include <stdio.h>
+int main()
+{
+  int fk_price,fk_disc,fk_charge,sd_price,sd_disc,sd_charge,ama_price,ama_disc,ama_charge;
+  scanf("%d%d%d%d%d%d%d%d%d",&fk_price,&fk_disc,&fk_charge,&sd_price,&sd_disc,&sd_charge,&ama_price,&ama_disc,&ama_charge);
+  int flipkart = (fk_price-(fk_disc*fk_price)/100)+fk_charge;
+  int snapdeal = (sd_price-(sd_disc*sd_price)/100)+sd_charge;
+  int amazon = (ama_price-(ama_disc*ama_price)/100)+ama_charge;
+  printf("In Flipkart: Rs.%d",flipkart);
+  printf("\nIn Snapdeal: Rs.%d",snapdeal);
+  printf("\nIn Amazon: Rs.%d",amazon);
+  if(flipkart<=amazon && flipkart<=snapdeal)
+  {
+    printf("\nChoose Flipkart");
+  }
+  else if(snapdeal<=amazon && snapdeal<=flipkart)
+    {
+      printf("\nChoose Snapdeal");
+    }
+   else if(amazon<=snapdeal && amazon<=flipkart)
+    {
+      printf("\nChoose Amazon");
+    }
+  else
+  {
+    printf("\nNone");
+  }
+  return 0;
+}
