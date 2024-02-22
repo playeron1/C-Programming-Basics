@@ -1,0 +1,12 @@
+Hello World with a new line
+
+Write a program to print the given sample output.
+
+--------------------------------------------------------------------------------------------------CODE------------------------------------------------------------------------------------------------------------------------------------------
+#include <stdio.h>
+int main()
+{
+   // Try out your code here
+   printf("Hello World\nHello World");
+   return 0;
+}
