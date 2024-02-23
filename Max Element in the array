@@ -1,0 +1,72 @@
+Description
+
+Write a program to find the maximum element in an array using recursion.
+
+
+
+Input Format
+
+Input consists of the size of the array and array elements
+
+
+
+Output Format
+
+The output prints the maximum element in an array. Refer sample input and output for formatting specifications.
+
+
+
+Sample Input 1
+
+
+Case 1
+Input (stdin)
+6
+2
+5
+1
+7
+4
+2
+
+Output (stdout)
+Maximum element in the array is 7
+--------------------------------------------------------------------------------------------------CODE------------------------------------------------------------------------------------------------------------------------------------------
+#include <stdio.h>
+
+// Recursive function to find the maximum element in an array
+int findMax(int arr[], int size, int index) {
+    if (index == size - 1) {
+        return arr[index];
+    } else {
+        int restMax = findMax(arr, size, index + 1);
+        return (arr[index] > restMax) ? arr[index] : restMax;
+    }
+}
+
+int main() {
+    int size;
+
+    // Input the size of the array
+    //printf("Enter the size of the array: ");
+    scanf("%d", &size);
+
+    // Check for a valid size
+    if (size <= 0) {
+        printf("Please enter a valid size for the array.\n");
+        return 1;
+    }
+
+    int arr[size];
+
+    // Input elements of the array
+    //printf("Enter the elements of the array:\n");
+    for (int i = 0; i < size; i++) {
+        scanf("%d", &arr[i]);
+    }
+
+    // Calculate and print the maximum element in the array
+    printf("Maximum element in the array is %d\n", findMax(arr, size, 0));
+
+    return 0;
+}
