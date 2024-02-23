@@ -1,0 +1,105 @@
+Description
+
+Ram has a fruit shop. He has arranged some set of fruits in the column and row-wise. Ram needs to find which row and column have a maximum number of fruits. Help him to find out.
+
+
+
+Input Format
+
+Input consists of 2 integers(size of rows and columns) and 1 2D array.
+
+
+
+Output Format
+
+The output prints the sum of all rows and columns as well as print the row and column which has the maximum sum. Refer to the sample output.
+
+
+
+Sample Input 1
+
+3
+
+3
+
+1 6 8
+
+2 5 1
+
+3 8 2
+
+
+
+Sample Output 1
+
+The Sum of rows is 15 8 13
+
+Row 1 has a maximum sum
+
+The Sum of columns is 6 19 11
+
+Column 2 has the maximum sum
+--------------------------------------------------------------------------------------------------CODE------------------------------------------------------------------------------------------------------------------------------------------
+#include <stdio.h>
+
+int main() {
+    int rows, cols;
+
+    // Input the number of rows and columns
+    //printf("Enter the number of rows: ");
+    scanf("%d", &rows);
+    //printf("Enter the number of columns: ");
+    scanf("%d", &cols);
+
+    int fruits[rows][cols];
+
+    // Input elements of the 2D array
+    //printf("Enter the elements of the 2D array:\n");
+    for (int i = 0; i < rows; i++) {
+        for (int j = 0; j < cols; j++) {
+            scanf("%d", &fruits[i][j]);
+        }
+    }
+
+    // Calculate and print the sum of rows
+    printf("The Sum of rows is ");
+    int maxRowSum = 0, maxRow = 0;
+    for (int i = 0; i < rows; i++) {
+        int rowSum = 0;
+        for (int j = 0; j < cols; j++) {
+            rowSum += fruits[i][j];
+        }
+        printf("%d ", rowSum);
+
+        // Update maximum row sum and index
+        if (rowSum > maxRowSum) {
+            maxRowSum = rowSum;
+            maxRow = i + 1; // Rows are 1-indexed in output
+        }
+    }
+
+    // Print the row with the maximum sum
+    printf("\nRow %d has a maximum sum\n", maxRow);
+
+    // Calculate and print the sum of columns
+    printf("The Sum of columns is ");
+    int maxColSum = 0, maxCol = 0;
+    for (int j = 0; j < cols; j++) {
+        int colSum = 0;
+        for (int i = 0; i < rows; i++) {
+            colSum += fruits[i][j];
+        }
+        printf("%d ", colSum);
+
+        // Update maximum column sum and index
+        if (colSum > maxColSum) {
+            maxColSum = colSum;
+            maxCol = j + 1; // Columns are 1-indexed in output
+        }
+    }
+
+    // Print the column with the maximum sum
+    printf("\nColumn %d has the maximum sum\n", maxCol);
+
+    return 0;
+}
