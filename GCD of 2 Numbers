@@ -1,0 +1,49 @@
+Description
+
+Write a program to compute the GCD of 2 numbers using recursion.
+
+
+
+Input Format
+
+Input consists of 2 integers.
+
+
+
+Output Format
+
+Output consists of one integer that represents the GCD of two numbers.
+
+
+
+Sample Input 1
+
+36
+
+27
+
+
+
+Sample Output 0
+
+9
+--------------------------------------------------------------------------------------------------CODE------------------------------------------------------------------------------------------------------------------------------------------
+#include <stdio.h>
+#include <math.h>
+int gcd(int m, int n)
+{
+  int x = m%n;
+  if( x == 0)
+    return n;
+  return gcd(n,x);
+  
+}
+int main()
+{
+  int a,b;
+  scanf("%d%d",&a,&b);
+  int m = a*(a>b) + b*(b>a); // get the max of a and b without if condition
+  int n = a*(a<b) + b*(b<a); // get the min of a and b without if condition
+  printf("%d",gcd(m,n));
+  return 0;
+}
