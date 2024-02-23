@@ -1,0 +1,57 @@
+Description
+
+Write a program to find the number of digits in a number using recursion.
+
+
+
+Input Format
+
+Input consists of a non-negative integer.
+
+
+
+Output Format
+
+Refer sample output for formatting specifications.
+
+
+
+Sample Input 1
+
+432
+
+
+
+Sample Output 1
+
+The number of digits in 432 is 3
+--------------------------------------------------------------------------------------------------CODE------------------------------------------------------------------------------------------------------------------------------------------
+#include <stdio.h>
+
+// Recursive function to calculate the number of digits
+int countDigits(int n) {
+    if (n == 0) {
+        return 0;
+    } else {
+        return 1 + countDigits(n / 10);
+    }
+}
+
+int main() {
+    int num;
+
+    // Input the non-negative integer
+    //printf("Enter a non-negative integer: ");
+    scanf("%d", &num);
+
+    // Check for non-negative input
+    if (num < 0) {
+        printf("Please enter a non-negative integer.\n");
+        return 1;
+    }
+
+    // Calculate and print the number of digits
+    printf("The number of digits in %d is %d\n", num, countDigits(num));
+
+    return 0;
+}
