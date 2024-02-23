@@ -1,0 +1,84 @@
+Description
+
+Rohit likes to play with numbers. He started to frame a matrix called uniformity matrix where he will be using either completely odd numbers or completely even numbers but not both. Write a program to check whether he has framed the matrix in the correct order or not.
+
+
+
+Input Format
+
+The input consists of (n*n+1) integers.
+The first integer corresponds to the number of rows/columns in the matrix.
+The remaining integers correspond to the elements in the matrix.
+The elements are read in row-wise order, the first row first, then the second row, and so on.
+
+
+Output Format
+
+Print Yes if it is a uniformity matrix.
+Print No if it is not a uniformity matrix.
+
+
+Sample Input 
+
+2
+
+4 5
+
+5 4
+
+
+
+Sample Output 
+
+No
+--------------------------------------------------------------------------------------------------CODE------------------------------------------------------------------------------------------------------------------------------------------
+#include <stdio.h>
+
+int isUniformityMatrix(int n, int matrix[][n]) {
+    int countOdd = 0, countEven = 0;
+
+    // Count the number of odd and even elements in the matrix
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n; j++) {
+            if (matrix[i][j] % 2 == 0) {
+                countEven++;
+            } else {
+                countOdd++;
+            }
+        }
+    }
+
+    // Check if either all elements are odd or all elements are even
+    if (countOdd == n * n || countEven == n * n) {
+        return 1; // It is a uniformity matrix
+    } else {
+        return 0; // It is not a uniformity matrix
+    }
+}
+
+int main() {
+    int n;
+
+    // Input the number of rows/columns in the matrix
+    //printf("Enter the number of rows/columns in the matrix: ");
+    scanf("%d", &n);
+
+    int matrix[n][n];
+
+    // Input elements of the matrix
+    //printf("Enter the elements of the matrix:\n");
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n; j++) {
+            scanf("%d", &matrix[i][j]);
+        }
+    }
+
+    // Check if it is a uniformity matrix and print the result
+    if (isUniformityMatrix(n, matrix)) {
+        printf("Yes\n");
+    } else {
+        printf("No\n");
+    }
+
+    return 0;
+}
