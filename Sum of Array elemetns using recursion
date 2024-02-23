@@ -1,0 +1,76 @@
+Description
+
+Write a program to find the sum of array elements using recursion.
+
+
+
+Input Format
+
+The Input consists of one integer and a set of integers.
+The first integer corresponds to the number of array elements.
+The second Input corresponds to the array elements.
+
+
+Output Format
+
+The output consists of one integer that corresponds to the sum of the array elements.
+
+
+
+Sample Input 1
+
+5
+
+1
+
+2
+
+3
+
+4
+
+5
+
+
+
+Sample Output 1
+
+15
+--------------------------------------------------------------------------------------------------CODE------------------------------------------------------------------------------------------------------------------------------------------
+#include <stdio.h>
+
+// Recursive function to calculate the sum of array elements
+int arraySum(int arr[], int size) {
+    if (size == 0) {
+        return 0;
+    } else {
+        return arr[size - 1] + arraySum(arr, size - 1);
+    }
+}
+
+int main() {
+    int size;
+
+    // Input the number of array elements
+    //printf("Enter the number of array elements: ");
+    scanf("%d", &size);
+
+    // Check for a valid size
+    if (size <= 0) {
+        printf("Please enter a valid size for the array.\n");
+        return 1;
+    }
+
+    int arr[size];
+
+    // Input elements of the array
+    //printf("Enter the array elements:\n");
+    for (int i = 0; i < size; i++) {
+        scanf("%d", &arr[i]);
+    }
+
+    // Calculate and print the sum of array elements
+    printf("%d\n", arraySum(arr, size));
+
+    return 0;
+}
