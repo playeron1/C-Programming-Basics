@@ -1,0 +1,113 @@
+Description
+
+A magic square is an arrangement of numbers (usually integers) in a square grid, there are numbers in the forward and backward main diagonals, all add up to the same number. Write a program to find whether a given matrix is a magic square or not.
+
+
+
+Input Format
+
+The input consists of (n*n+1) integers.
+The first integer corresponds to the number of rows/columns in the matrix.
+The remaining integers correspond to the elements in the matrix.
+The elements are read in row-wise order, the first row first, then the second row, and so on.
+
+
+Output Format
+
+Print yes if it is a magic square.
+Print no if it is not a magic square.
+
+
+Sample Input 1
+
+2
+
+4 5
+
+5 4
+
+
+
+Sample Output 1
+
+No
+--------------------------------------------------------------------------------------------------CODE------------------------------------------------------------------------------------------------------------------------------------------
+#include <stdio.h>
+
+// Function to check if the given matrix is a magic square
+int isMagicSquare(int n, int matrix[][n]) {
+    // Calculate the sum of the first row
+    int sum = 0;
+    for (int i = 0; i < n; i++) {
+        sum += matrix[0][i];
+    }
+
+    // Check the sum of all rows
+    for (int i = 1; i < n; i++) {
+        int rowSum = 0;
+        for (int j = 0; j < n; j++) {
+            rowSum += matrix[i][j];
+        }
+        if (rowSum != sum) {
+            return 0; // Not a magic square
+        }
+    }
+
+    // Check the sum of all columns
+    for (int i = 0; i < n; i++) {
+        int colSum = 0;
+        for (int j = 0; j < n; j++) {
+            colSum += matrix[j][i];
+        }
+        if (colSum != sum) {
+            return 0; // Not a magic square
+        }
+    }
+
+    // Check the sum of the main diagonal
+    int mainDiagonalSum = 0;
+    for (int i = 0; i < n; i++) {
+        mainDiagonalSum += matrix[i][i];
+    }
+    if (mainDiagonalSum != sum) {
+        return 0; // Not a magic square
+    }
+
+    // Check the sum of the other diagonal
+    int otherDiagonalSum = 0;
+    for (int i = 0; i < n; i++) {
+        otherDiagonalSum += matrix[i][n - 1 - i];
+    }
+    if (otherDiagonalSum != sum) {
+        return 0; // Not a magic square
+    }
+
+    return 1; // It is a magic square
+}
+
+int main() {
+    int n;
+
+    // Input the number of rows/columns in the matrix
+    //printf("Enter the number of rows/columns in the matrix: ");
+    scanf("%d", &n);
+
+    int matrix[n][n];
+
+    // Input elements of the matrix
+    //printf("Enter the elements of the matrix:\n");
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n; j++) {
+            scanf("%d", &matrix[i][j]);
+        }
+    }
+
+    // Check if it is a magic square and print the result
+    if (isMagicSquare(n, matrix)) {
+        printf("Yes\n");
+    } else {
+        printf("No\n");
+    }
+
+    return 0;
+}
